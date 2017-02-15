@@ -1,10 +1,83 @@
 
 <link rel="import" href="../polymer/polymer.html" />
 <style>
-  
+  .vMapCell .popup-container{
+    position: absolute;
+    margin-top: 70px;
+    max-width: 250px;
+    max-height: 300px;
+    background-color: #E0E0E0;
+    padding: 10px;
+    color: #24478f;
+    min-width: 230px;
+    z-index: 1000;
+    }
+    .vMapCell .popup-content{
 
+    max-height: 250px;
+      overflow:auto;
+    }
+ .vMapCell .popup-arrow{
+        position: absolute;
+        top: -20px;
+        left: 15px;
+        margin-top: 10px;
+        border-left: 13px solid transparent;
+        border-right: 13px solid transparent;
+        border-bottom: 13px solid #E0E0E0;
+        width: 0;
+        height: 0;
+    }
+  .vMapCell .popup-listItem{
+    line-height: 30px;
+    vertical-align: top;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
+  .vMapCell .anomalyIcon{
+    margin-top: -5px;
+  }
 
+  .vMapCell .popup-listHeader{
+    font-weight: bold;
+    color: black;
+    font-size: 12px;
+    margin-bottom: 7px;
+  }
+
+  .vMapCell .activePopUp{
+    position:absolute;
+    display:none;
+  }
+
+  .vMapCell .activePopUp a{
+    cursor:pointer;
+     text-decoration: none;
+  }
+
+  .vMapCell .popup-header{
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #9999a3;
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+  }
+
+  .vMapCell .section-header{
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    margin-top:3px;
+  }
+  .vspin{
+    font-size: 15px;
+    position: absolute;
+    bottom: -16px;
+    color: #8e8989;
+  }
 </style>
 
 <dom-module id="vul-map">
