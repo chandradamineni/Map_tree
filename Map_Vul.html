@@ -84,33 +84,32 @@
   <!-- POP UP CODE --> 
       <div class='activePopUp' id$="popUp{{child.name}}" on-mouseover="popUpMouseOverHandler">
         <div class='popup-container'>
-        <div class='popup-arrow'></div>
-        <div class="popup-header">{{child.name}}</div>
-        <div class="popup-content">
-        <template is="dom-if" if="{{!isPopUpContentAvailable(child)}}">
-          <b>No vulnerabilities available!</b>
-        </template>
-        <template is="dom-if" if="{{isPopUpContentAvailable(child)}}">
-          <template is="dom-if" if="{{child.safety.length}}"><div class="section-header">SAFETY</div>
-        <template id="vMap-safety-template" is="dom-repeat" items="{{child.safety}}" as="safety">
-        <a href$="{{navigateTo(safety)}}"><div class='popup-listItem'><img src$="{{getIcon(safety)}}" style='vertical-align: middle' class$ = "{{getClass(safety)}}"/>{{safety.label}}</div></a>
-        </template>
-        </template>
-        <template is="dom-if" if="{{child.controls.length}}"><div class="section-header">CONTROLS</div>
-        <template id="vMap-controls-template" is="dom-repeat" items="{{child.controls}}" as="control">
-        <a href$="{{navigateTo(control)}}"><div class='popup-listItem'><img src$="{{getIcon(control)}}" style='vertical-align: middle' class$ = "{{getClass(control)}}"/>{{control.label}}</div></a>
-        </template>
-        </template>
-        <template is="dom-if" if="{{child.prodImpact.length}}"><div class="section-header">PRODUCTION IMPACT</div>
-        <template id="vMap-prodImpact-template" is="dom-repeat" items="{{child.prodImpact}}" as="prodImpact">
-        <a href$="{{navigateTo(prodImpact)}}"><div class='popup-listItem'><img src$="{{getIcon(prodImpact)}}" style='vertical-align: middle' class$ = "{{getClass(prodImpact)}}"/>{{prodImpact.label}}</div></a>
-        </template>
-        </template>
-        </template>
-        </div>
+          <div class='popup-arrow'></div>
+          <div class="popup-header">{{child.name}}</div>
+          <div class="popup-content">
+            <template is="dom-if" if="{{!isPopUpContentAvailable(child)}}">
+              <b>No vulnerabilities available!</b>
+            </template>
+            <template is="dom-if" if="{{isPopUpContentAvailable(child)}}">
+              <template is="dom-if" if="{{child.safety.length}}"><div class="section-header">SAFETY</div>
+                <template id="vMap-safety-template" is="dom-repeat" items="{{child.safety}}" as="safety">
+                  <a href$="{{navigateTo(safety)}}"><div class='popup-listItem'><img src$="{{getIcon(safety)}}" style='vertical-align: middle' class$ = "{{getClass(safety)}}"/>{{safety.label}}</div></a>
+                </template>
+              </template>
+              <template is="dom-if" if="{{child.controls.length}}"><div class="section-header">CONTROLS</div>
+                <template id="vMap-controls-template" is="dom-repeat" items="{{child.controls}}" as="control">
+                  <a href$="{{navigateTo(control)}}"><div class='popup-listItem'><img src$="{{getIcon(control)}}" style='vertical-align: middle' class$ = "{{getClass(control)}}"/>{{control.label}}</div></a>
+                </template>
+              </template>
+              <template is="dom-if" if="{{child.prodImpact.length}}"><div class="section-header">PRODUCTION IMPACT</div>
+                <template id="vMap-prodImpact-template" is="dom-repeat" items="{{child.prodImpact}}" as="prodImpact">
+                  <a href$="{{navigateTo(prodImpact)}}"><div class='popup-listItem'><img src$="{{getIcon(prodImpact)}}" style='vertical-align: middle' class$ = "{{getClass(prodImpact)}}"/>{{prodImpact.label}}</div></a>
+                </template>
+              </template>
+            </template>
+          </div>
         </div>
       </div>
-        
       <!-- POP UP CODE -->
 </dom-module>
 <script type="text/javascript" src="js/vul-map.js"></script>
