@@ -27,6 +27,15 @@ Polymer({
         }
 
     },
+      refreshMap: function() {
+        var self = this;
+        self.intervalRefresh = setInterval(function() {
+            self.fetchVMapTreeData();
+            self.getTimeline();
+            var autoslide = document.querySelector('#moveSlider');
+            autoslide.setAttribute('value', '168');
+        }, 60000);
+    },
  attached: function(alters, alertName) {
         var self = this;
         self.addEventListener('VMap-data-started', function() {
