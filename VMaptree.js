@@ -41,5 +41,32 @@ Polymer({
             autoslide.setAttribute('value', '168');
         });
 
-        
+        self.dragSlider();
+        document.querySelector('.legend-section').style.display = 'none';
+        this.style.display = "block";
+        self.fetchVMapTreeData();
+        self.getTimeline();
+        self.refreshMap();
+        var legendData = [{
+            label: 'Safety',
+            type: 'safety',
+            class: '',
+            isSwitched: true,
+            color: '#ed1c24'
+        }, {
+            label: 'Controls',
+            type: 'controls',
+            class: '',
+            isSwitched: true,
+            color: '#f8d632'
+
+        }, {
+            label: 'Prod Impact',
+            type: 'prodImpact',
+            class: '',
+            isSwitched: true,
+            color: '#51bee5'
+        }];
+        self.legendData = legendData;
+    }
 });
