@@ -36,6 +36,24 @@ Polymer({
             autoslide.setAttribute('value', '168');
         }, 60000);
     },
+    /*To Find assest Info for breadcrumbs.*/
+    findAssetInMenu: function(obj, str) {
+        var _this = this;
+        if (obj.id === str) {
+            return obj;
+        } else {
+            for (var i = 0; i < obj.children.length; i++) {
+                if (obj.children.length > 1) {
+                    for (var j = 0; j < obj.children.length; j++) {
+                        if (obj.children[j].id === str) {
+                            return _this.findAssetInMenu(obj.children[j], str);
+                        }
+                    }
+                }
+                return _this.findAssetInMenu(obj.children[i], str);
+            }
+        }
+    },
  attached: function(alters, alertName) {
         var self = this;
         self.addEventListener('VMap-data-started', function() {
