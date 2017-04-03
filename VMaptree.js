@@ -54,6 +54,28 @@ Polymer({
             }
         }
     },
+        startTimer: function() {
+        var popupDiv = document.querySelector(".popup-vmap-container");
+        this.timers.push(setTimeout(function() {
+            popupDiv.style.display = "none";
+        }, 500));
+    },
+
+    stopTimer: function() {
+        if (this.timers.length) {
+            for (var index in this.timers) {
+                clearTimeout(this.timers[index]);
+            }
+        }
+    },
+
+    resetTimeOut: function() {
+        var self = this;
+        self.myVar = setTimeout(function() {
+            self.resetFilter();
+        }, 300000);
+    },
+
  attached: function(alters, alertName) {
         var self = this;
         self.addEventListener('VMap-data-started', function() {
