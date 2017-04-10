@@ -27,6 +27,21 @@ Polymer({
         }
 
     },
+      getCxtDetailsinfo: function() {
+        var contextBrowser = document.querySelector('pxi-context-browser');
+        var contextDetails = {
+            classification: contextBrowser.getAttribute('classification'),
+            assestUri: contextBrowser.getAttribute('assestUri'),
+            userName: contextBrowser.getAttribute('userName'),
+            assetName: contextBrowser.getAttribute('assetName')
+        };
+        return contextDetails;
+    },
+
+    showHideCard: function() {
+        this.style.display = "none";
+        document.querySelector('pfd-viewer').style = 'block';
+    },
       refreshMap: function() {
         var self = this;
         self.intervalRefresh = setInterval(function() {
