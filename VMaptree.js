@@ -42,6 +42,43 @@ Polymer({
         this.style.display = "none";
         document.querySelector('pfd-viewer').style = 'block';
     },
+       /*Generating Breadcrumbs.*/
+    genrteExternalInfo: function(data) {
+        this.contextData = data;
+        var self = this;
+        var bcsContainer = document.querySelector('.vmap-bcs');
+        while (bcsContainer.firstChild) {
+            bcsContainer.removeChild(bcsContainer.firstChild);
+        };
+        var dataSize = data.length
+        for (var i = 0; i < dataSize; i++) {
+            if (data[i].isOpenable) {
+                var bcElem = document.createElement('div');
+                bcElem.className = 'single-vbc flt-left';
+                if (i != dataSize - 1) {
+                    bcElem.innerText = data[i].name + ' > ';
+                    bcElem.classList.add('cursor', 'clickable');
+                    bcElem.id = i;
+                    /*Click on Breadcrumbs Navigation*/
+                    bcElem.onclick = function() {
+                        document.querySelector('pxi-context-browser').openedItemName = self.contextData[this.id].id;
+                        document.querySelector('pxi-context-browser').configureBreadcrumbs();
+                        document.querySelector('pxi-context-browser').selectItem(self.findAssetInMenu(document.querySelector('pxi-context-browser').browserContext.data[0], self.contextData[this.id].id));
+                        var currentId = this.id;
+                        var prevId = currentId - 1;
+                        self.fire('open-context', {
+                            current: self.contextData[currentId],
+                            parent: self.contextData[prevId]
+                        });
+                    };
+                } else {
+                    bcElem.innerText = data[i].name;
+                }
+                bcsContainer.appendChild(bcElem);
+            }
+
+        }
+    },
       refreshMap: function() {
         var self = this;
         self.intervalRefresh = setInterval(function() {
