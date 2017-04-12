@@ -160,7 +160,10 @@ Polymer({
                 method: 'POST'
             }).then(function(response) {
                 successCallback && typeof successCallback === "function" && successCallback(response);
-            },
+            }, function(message) {
+                console.log(message);
+                errorCallback && typeof errorCallback === "function" && errorCallback(message);
+            });
         }
     },
 
