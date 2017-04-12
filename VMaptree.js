@@ -150,6 +150,20 @@ Polymer({
             self.resetFilter();
         }, 300000);
     },
+       fetch: function(dataObj, url, successCallback, errorCallback) {
+        var contextDetails = this.getContextDetails();
+        dataObj.userId = contextDetails.userName;
+        if (contextDetails.userName) {
+            px.dealer.httpRequest({
+                url: url,
+                data: dataObj,
+                method: 'POST'
+            }).then(function(response) {
+                successCallback && typeof successCallback === "function" && successCallback(response);
+            },
+        }
+    },
+
 
  attached: function(alters, alertName) {
         var self = this;
