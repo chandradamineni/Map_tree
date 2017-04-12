@@ -120,7 +120,30 @@ Polymer({
             }
         }
     },
+      applyFilter: function() {
+        clearTimeout(this.myVar);
+        var data = this.data;
+        this.$.filterTooltip.tooltipMessage = 'Filter applied';
+        this.$.filiterIcon.classList.add('active-filter');
+        data.filters.prodImp = this.$.productionFilter.value;
+        data.filters.controls = this.$.controlFilter.value;
+        data.filters.safety = this.$.safetyFilter.value;
+        this.resetTimeOut();
+        this.drawVMap(data);
+        this.saveFilter(data.filters);
+    },
 
+    saveFilter: function(filters) {
+        var contextDetails = this.getContextDetails();
+        var dataObj = {
+            'safety': filters.safety,
+            'controls': filters.controls,
+            'prodImp': filters.prodImp,
+            'assetUri': contextDetails.assestUri
+        };
+
+        this.fetch(dataObj, 'api/vmap/applyFilter');
+    },
     resetTimeOut: function() {
         var self = this;
         self.myVar = setTimeout(function() {
