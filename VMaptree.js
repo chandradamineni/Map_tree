@@ -236,3 +236,9 @@ function getIcon(severity, type) {
     var temp = icons[type][severity];
     return icons[type][severity];
 }
+detached: function() {
+    var self = this;
+    if (self.intervalRefresh) {
+        clearInterval(self.intervalRefresh);
+    }
+},
