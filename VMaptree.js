@@ -217,3 +217,22 @@ function isNumberKey(evt) {
         return false;
     return true;
 }
+function getIcon(severity, type) {
+    var icons = {
+        excursion: {
+            0: 'images/Ex_Hi.png',
+            1: 'images/Ex_Hi.png',
+            2: 'images/Ex_Mid.png',
+            3: 'images/Ex_Low.png',
+        },
+        anomaly: {
+            0: 'images/Ex_Hi.png',
+            1: 'images/Anmls_Hi.png',
+            2: 'images/Anmls_Med.png',
+            3: 'images/anmls_low.png'
+        }
+
+    }
+    var temp = icons[type][severity];
+    return icons[type][severity];
+}
